@@ -7,7 +7,7 @@
       {
         "label": "Kill Ports (8000, 5173)",
         "type": "shell",
-        "command": "set -euo pipefail; for p in 8000 5173; do P=$(lsof -ti tcp:$p || true); if [ -n \"$P\" ]; then echo \"Killing $P on port $p\"; kill $P || true; sleep 0.2; if lsof -ti tcp:$p >/dev/null; then kill -9 $P || true; fi; else echo \"No process on port $p\"; fi; done; exit",
+        "command": "set -euo pipefail; for p in 8001 5173; do P=$(lsof -ti tcp:$p || true); if [ -n \"$P\" ]; then echo \"Killing $P on port $p\"; kill $P || true; sleep 0.2; if lsof -ti tcp:$p >/dev/null; then kill -9 $P || true; fi; else echo \"No process on port $p\"; fi; done; exit",
         "problemMatcher": [],
         "presentation": {
           "reveal": "always",
@@ -22,7 +22,7 @@
       {
         "label": "Backend",
         "type": "shell",
-        "command": "set -euo pipefail; cd backend; if [ -x venv/bin/python ]; then PY=venv/bin/python; elif [ -x .venv/bin/python ]; then PY=.venv/bin/python; else echo \"No venv found at backend/venv or backend/.venv\"; exec \"$SHELL\" -l; fi; (sleep 0.5; echo __TASK_READY__) & exec \"$PY\" -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload",
+        "command": "set -euo pipefail; cd backend; if [ -x venv/bin/python ]; then PY=venv/bin/python; elif [ -x .venv/bin/python ]; then PY=.venv/bin/python; else echo \"No venv found at backend/venv or backend/.venv\"; exec \"$SHELL\" -l; fi; (sleep 0.5; echo __TASK_READY__) & exec \"$PY\" -m uvicorn app.main:app --host 0.0.0.0 --port 8001 --reload",
         "isBackground": true,
         "problemMatcher": [
           {

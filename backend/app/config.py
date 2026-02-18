@@ -78,7 +78,7 @@ class Settings(BaseSettings):
     
     # Optional fields for compatibility with existing imports
     frontend_url: str = "http://localhost:3000"
-    backend_url: str = "http://localhost:8000"
+    backend_url: str = "http://localhost:8001"
     cors_origins: List[str] = ["*"]
 
     # SendGrid Configuration (add these lines)

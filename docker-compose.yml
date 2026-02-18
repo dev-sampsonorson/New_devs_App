@@ -6,7 +6,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/propertyflow
       - REDIS_URL=redis://redis:6379/0
@@ -22,9 +22,9 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "3000:80" # Mapping internal 80 (nginx) to 3000
+      - "3001:80" # Mapping internal 80 (nginx) to 3000
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - VITE_API_URL=http://localhost:8001
     depends_on:
       - backend
 
